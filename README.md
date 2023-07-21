@@ -27,15 +27,15 @@ To run this project locally, you need to follow the installation steps mentioned
 
 1. Clone the repository to your local machine using the following command:
 
-git clone https://github.com/Aleksandar-Blagoev/the-cocktail-lab.git
+  - git clone https://github.com/Aleksandar-Blagoev/the-cocktail-lab.git
 
 2. Navigate to the project's root directory:
 
-cd cocktail-manager-web-app
+  - cd cocktail-manager-web-app
 
 3. Install the required dependencies using npm:
 
-npm install
+  - npm install
 
 ## Usage
 
