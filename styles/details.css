@@ -1,0 +1,29 @@
+.details-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 100;
+    max-width: 400px;
+}
+
+#detailsContainerCard {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+#details .details-card {
+    min-width: 320px;
+    height: 100%;
+}
+
+.details-card h2, .details-card p {
+    margin: 2px;
+    padding: 2px;
+}

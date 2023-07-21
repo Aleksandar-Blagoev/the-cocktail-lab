@@ -1,0 +1,13 @@
+
+header {
+    border-bottom: 3px solid #6200ee;
+    border-top: 3px solid #6200ee;;
+}
+
+.mdc-tab--active {
+    color: red;
+}
+
+.mdc-tab-scroller__scroll-area {
+    justify-content: space-around;
+ }

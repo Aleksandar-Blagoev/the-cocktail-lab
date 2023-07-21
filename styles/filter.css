@@ -1,0 +1,17 @@
+#filter ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#filter h2 {
+    font-family: inherit;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#categoryFilter, #cupTypeFilter, #ingredientsFilter, #typeDrinkFilter {
+    padding: 10px;
+    margin: 10px;
+}

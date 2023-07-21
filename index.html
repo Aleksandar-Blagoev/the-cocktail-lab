@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/coctails.css">
+    <link rel="stylesheet" href="./styles/loginAndRegister.css">
+    <link rel="stylesheet" href="./styles/details.css">
+    <link rel="stylesheet" href="./styles/filter.css">
+
+    <script src="./constants.js"></script>
+    <script src="./utilities.js"></script>
+    <script src="./models/userManager.js"></script>
+    <script src="./controllers/loginController.js"></script>
+    <script src="./controllers/registerController.js"></script>
+    <script src="./models/coctailManager.js"></script>
+    <script src="./controllers/coctailController.js"></script>
+    <script src="./models/detailsManager.js"></script>
+    <script src="./controllers/detailsController.js"></script>
+    <script src="./models/filterManager.js"></script>
+    <script src="./controllers/filterController.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="mdc-tab-bar" role="tablist">
+            <div class="mdc-tab-scroller">
+                <div class="mdc-tab-scroller__scroll-area">
+                    <div class="mdc-tab-scroller__scroll-content">
+                        <a class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0"
+                            href="#coctails">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">local_bar</span>
+                                <span class="mdc-tab__text-label">Cocktails</span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                            <div class="mdc-tab__focus-ring"></div>
+                        </a>
+                        <a class="mdc-tab" role="tab" aria-selected="false" tabindex="0" href="#details">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">info</span>
+                                <span class="mdc-tab__text-label">Details</span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                            <div class="mdc-tab__focus-ring"></div>
+                        </a>
+                        <a class="mdc-tab" role="tab" aria-selected="false" tabindex="0" href="#filter">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">filter_list</span>
+                                <span class="mdc-tab__text-label">Filter</span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                            <div class="mdc-tab__focus-ring"></div>
+                        </a>
+                        <a class="mdc-tab" role="tab" aria-selected="false" tabindex="0" href="#login" id="login-link">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">login</span>
+                                <span class="mdc-tab__text-label">Login</span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                            <div class="mdc-tab__focus-ring"></div>
+                        </a>
+                        <a class="mdc-tab" role="tab" aria-selected="false" tabindex="0" href="#register"
+                            id="register-link">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">person_add</span>
+                                <span class="mdc-tab__text-label">Register</span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                            <div class="mdc-tab__focus-ring"></div>
+                        </a>
+                        <a class="mdc-tab" role="tab" aria-selected="false" tabindex="0" href="#login" id="logout-link">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">logout</span>
+                                <span class="mdc-tab__text-label">Logout</span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                            <div class="mdc-tab__focus-ring"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="login">
+        <div class="container">
+            <div class="screen">
+                <div class="screen-content">
+                    <form class="login" id="login-form">
+                        <div class="login-field">
+                            <i class="login-icon fas fa-user"></i>
+                            <input type="text" class="login-input" placeholder="Username" id="login-username">
+                        </div>
+                        <div class="login-field">
+                            <i class="login-icon fas fa-lock"></i>
+                            <input type="password" class="login-input" placeholder="Password" id="login-password">
+                        </div>
+                        <div class="button-container">
+                            <button class="button login-submit" id="login-button">
+                                <span class="button-text">Log In Now</span>
+                                <i class="button-icon fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="register">
+        <div class="container">
+            <div class="screen">
+                <div class="screen-content">
+                    <form class="register" id="register-form">
+                        <div class="register-field">
+                            <i class="register-icon fas fa-user"></i>
+                            <input type="text" class="register-input" placeholder="Username" id="register-username">
+                        </div>
+                        <div class="register-field">
+                            <i class="register-icon fas fa-lock"></i>
+                            <input type="password" class="register-input" placeholder="Password" id="register-password">
+                        </div>
+                        <div class="register-field">
+                            <i class="register-icon fas fa-lock"></i>
+                            <input type="password" class="register-input" placeholder="Confirm Password"
+                                id="confirm-pass">
+                        </div>
+                        <div class="button-container">
+                            <button class="button register-submit" id="register-button">
+                                <span class="button-text">Register Now</span>
+                                <i class="button-icon fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="coctails">
+        <div class="search-container">
+            <label class="search-label" for="search">Search: </label>
+            <input type="text" id="search" class="search-input">
+        </div>
+
+        <div id="allCoctails">
+
+            <div id="mainContainer">
+
+            </div>
+            <div id="favouriteContainer">
+            </div>
+
+        </div>
+    </div>
+
+    <div id="details">
+        <div id="detailsContainerCard"> </div>
+    </div>
+
+    <div id="filter">
+        <div id="categoryFilter">
+            <h2>Category</h2>
+            <ul id="categoryList"></ul>
+        </div>
+          
+          <div id="cupTypeFilter">
+            <h2>Cup type</h2>
+            <ul id="cupTypeList"></ul>
+          </div>
+          
+          <div id="ingredientsFilter">
+            <h2>Ingredients</h2>
+            <ul id="ingredientsList"></ul>
+          </div>
+          
+          <div id="typeDrinkFilter">
+            <h2>Type drink</h2>
+            <ul id="typeDrinkList"></ul>
+          </div>
+    </div>
+    <div id="404">Not found</div>
+
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="./main.js"></script>
+
+</body>
+
+</html>

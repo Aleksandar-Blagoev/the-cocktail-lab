@@ -1,0 +1,85 @@
+.search-container {
+    display: inline-block;
+    align-items: center;
+    border: 1px solid var(--mdc-theme-primary);
+    border-radius: 4px;
+    padding: 6px;
+    transition: border-color 0.2s;
+    margin: 10px;
+
+}
+
+.search-label {
+    margin-right: 8px;
+    font-weight: bold;
+    font-family: inherit;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-container:focus-within {
+    border-color: var(--mdc-theme-primary);
+}
+
+.search-label,
+.search-input:focus+.search-label {
+    color: var(--mdc-theme-primary);
+}
+
+
+.mdc-card.demo-card {
+    width: 200px;
+    height: 300px;
+}
+
+/* Set fixed dimensions and control image display for the card media */
+.mdc-card.demo-card .mdc-card__media {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    /* Maintain aspect ratio and cover the entire container */
+}
+
+/* Adjust the grid layout for the cards in the mainContainer */
+#mainContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 cards in a row */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Use flexbox for the favoriteContainer */
+#favouriteContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+/* Apply custom styling to the favorite cocktail card */
+.favorite-card {
+    flex: 1 0 calc(25% - 20px);
+}
+
+
+.mdc-card.demo-card {
+    transition: transform 0.2s ease-in-out; /* Add a smooth transition for the transform property */
+  }
+
+  .mdc-card.demo-card:hover {
+    transform: translateY(-5px); /* Move the card up by 5px on hover */
+  }
+
+  #mainContainer .mdc-card {
+    background-color: burlywood;
+  }
