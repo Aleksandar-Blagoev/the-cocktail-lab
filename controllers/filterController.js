@@ -1,8 +1,8 @@
 class FilterController {
-    constructor(filterManager, coctailController) {
+    constructor(filterManager, coctailController, data) {
         this.filterManager = filterManager;
         this.coctailController = coctailController;
-        this.cachedData = JSON.parse(localStorage.getItem('coctailDataFavourite')) || [];
+        // this.cachedData = JSON.parse(localStorage.getItem('coctailDataFavourite')) || data;
     }
 
     render = () => {
@@ -64,8 +64,9 @@ class FilterController {
     }
 
     filterCocktails = (selectedValue, property) => {
-        console.log(this.cachedData);
-        return this.cachedData.drinks.filter(cocktail => cocktail[property] === selectedValue);
+        const cachedData = JSON.parse(localStorage.getItem('coctailDataFavourite')) ;
+
+        return cachedData.drinks.filter(cocktail => cocktail[property] === selectedValue);
     }
 
 }
