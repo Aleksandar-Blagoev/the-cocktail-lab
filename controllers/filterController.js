@@ -30,7 +30,7 @@ class FilterController {
                 return this.filterManager.filterByIngridients();
             })
             .then(data => {
-                this.renderLinks(data.drinks, "strIngredient1", ingredientsContainer);
+                this.renderLinks(data.drinks, `strIngredient1`, ingredientsContainer);
             })
             .then(() => {
                 return this.filterManager.filterByAlcohol();
@@ -54,6 +54,7 @@ class FilterController {
             button.addEventListener('click', (event) => {
                 event.preventDefault();
                 const selectedValue = item[property];
+                console.log("Selected value", selectedValue);
                 const filteredCocktails =  this.filterCocktails(selectedValue, property);
                 this.coctailController.filteredCocktails = filteredCocktails; 
                 location.hash = "coctails";
@@ -63,10 +64,25 @@ class FilterController {
         });
     }
 
+    // filterCocktails = (selectedValue, property) => {
+    //     const cachedData = JSON.parse(localStorage.getItem('coctailDataFavourite')) ;
+
+    //     return cachedData.drinks.filter(cocktail => cocktail[property] === selectedValue);
+    // }
+
     filterCocktails = (selectedValue, property) => {
-        const cachedData = JSON.parse(localStorage.getItem('coctailDataFavourite')) ;
+        const cachedData = JSON.parse(localStorage.getItem('coctailDataFavourite'));
+        const MAX_INGREDIENT_COUNT = 100; 
 
-        return cachedData.drinks.filter(cocktail => cocktail[property] === selectedValue);
+        return cachedData.drinks.filter(cocktail => {
+            // Assuming ingredients are stored in properties like 'strIngredient1', 'strIngredient2', etc.
+            for (let i = 1; i <= MAX_INGREDIENT_COUNT; i++) {
+                if (cocktail[`strIngredient${i}`] === selectedValue) {
+                    return true;
+                }
+            }
+            return false;
+        });
     }
-
+    
 }
