@@ -46,7 +46,7 @@ class FilterController {
     renderLinks = (data, property, container) => {
         // let mainContainer = document.querySelector("#favouriteContainer");
 
-        data.forEach((item,i) => {
+        data.forEach((item, i) => {
             const button = document.createElement('button');
             button.classList.add('mdc-button', 'mdc-button--raised');
             button.innerHTML = `<span class="mdc-button__ripple"></span> ${item[property]}`;
@@ -55,8 +55,9 @@ class FilterController {
                 event.preventDefault();
                 const selectedValue = item[property];
                 console.log("Selected value", selectedValue);
-                const filteredCocktails =  this.filterCocktails(selectedValue, property);
-                this.coctailController.filteredCocktails = filteredCocktails; 
+                const filteredCocktails = this.filterCocktails(selectedValue, property);
+                console.log("filter", filteredCocktails);
+                this.coctailController.filteredCocktails = filteredCocktails;
                 location.hash = "coctails";
             });
 
@@ -72,17 +73,25 @@ class FilterController {
 
     filterCocktails = (selectedValue, property) => {
         const cachedData = JSON.parse(localStorage.getItem('coctailDataFavourite'));
-        const MAX_INGREDIENT_COUNT = 100; 
+        // Define the maximum number of ingredients to check per cocktail
+        const MAX_INGREDIENT_COUNT = 15;
 
+        // Filter cocktails based on whether any of their ingredient fields match the selected value
         return cachedData.drinks.filter(cocktail => {
-            // Assuming ingredients are stored in properties like 'strIngredient1', 'strIngredient2', etc.
+            // Iterate through each possible ingredient field
             for (let i = 1; i <= MAX_INGREDIENT_COUNT; i++) {
-                if (cocktail[`strIngredient${i}`] === selectedValue) {
-                    return true;
+                // Construct the property name dynamically (e.g., strIngredient1, strIngredient2, ...)
+                const ingredientProperty = `strIngredient${i}`;
+                // Check if the current ingredient matches the selected value
+                if (cocktail[ingredientProperty] && cocktail[ingredientProperty].toLowerCase() === selectedValue.toLowerCase()) {
+                    return true; // Return true if a match is found
                 }
             }
+            // Return false if no matching ingredient was found in any of the fields
             return false;
         });
-    }
-    
+    };
+
+
+
 }
